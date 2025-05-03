@@ -9,6 +9,9 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Made by IamKikin, Written in NextJS using Nextra.',
   },
+  feedback: {
+		content: null
+	}
 }
 
 export default config
