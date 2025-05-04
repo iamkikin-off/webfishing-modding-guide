@@ -22,7 +22,7 @@ export default function HomePage() {
           marginBottom: '1rem',
         }}
       >
-        Hello World
+        Welcome to the WEBFISHING Modding Guide!
       </h1>
       <p>
         <Link
