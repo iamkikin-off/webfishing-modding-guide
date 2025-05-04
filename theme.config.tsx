@@ -7,7 +7,7 @@ const config: DocsThemeConfig = {
     link: 'https://discord.gg/fWFswUURQX',
   },
   footer: {
-    text: 'Made by IamKikin, Written in NextJS using Nextra.',
+    text: 'Made by IamKikin, Written in NextJS using Nextra Docs Template.',
   },
   feedback: {
 		content: null
