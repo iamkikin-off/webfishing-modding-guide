@@ -1,3 +1,5 @@
+import { Callout } from 'nextra/components'
+
 # Changing game behaviour
 So, you already made a project... now what? Well let's try changing some game values like **Player Speed**! For that we are gonna code in **GDScript**.
 ```gd filename="speed.gd" {3} copy
@@ -78,6 +80,8 @@ func init_player(player: Actor): # When player gets added, run this code:
     # The 'player' variable, is the Player Node. (This has all the Player related stuff, ofc.)
 	player.walk_speed = 32 # This sets the walk_speed to 32!
 ```
+
+<Callout>hi</Callout>
 
 # C#
 👽
