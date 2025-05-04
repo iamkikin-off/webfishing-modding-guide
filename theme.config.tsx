@@ -12,6 +12,7 @@ const config: DocsThemeConfig = {
   feedback: {
 		content: null
 	},
+  docsRepositoryBase: 'https://github.com/iamkikin-off/webfishing-modding-guide',
   editLink: {
     component: () => null
   }  
