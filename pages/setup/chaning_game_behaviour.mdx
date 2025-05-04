@@ -1,0 +1,86 @@
+import { FileTree } from 'nextra/components'
+
+# Changing game behaviour!
+So, you already made a project... now what? Well let's try changing some game values like **Player Speed**! For that we are gonna code in **GDScript**.
+```gd filename="speed.gd" {3} copy
+var walk_speed = 3.2
+```
+
+But what if you want to change something like **Player Gravity**? Well, for that we would need to code in **C#**, since **GRAVITY** is a constant.
+
+```gd filename="gravity.gd" {3} copy
+const GRAVITY = 32.0
+```
+
+For now we are gonna be changing stuff in **GDScript**, since it's easier for beginners & you don't need it for stuff like LureRefreshed.
+
+# Setting up your Mod Files
+So, right now, your **WEBFISHING** file system should look like this:
+<FileTree>
+  <FileTree.Folder name="res://" defaultOpen>
+    <FileTree.Folder name="Assets"/>
+    <FileTree.Folder name="Resources"/>
+    <FileTree.Folder name="Scenes"/>
+    <FileTree.Folder name="Sounds"/>
+    <FileTree.File name="default_bus_layout.tres" />
+    <FileTree.File name="default_env.tres" />
+    <FileTree.File name="icon.png" />
+    <FileTree.File name="interactable.gd" />
+  </FileTree.Folder>
+</FileTree>
+
+Add a new folder to the **'res://'** called "mods". Add another folder to the **'mods'** folder called **'YourName.YourModName'**.
+This is where you are gonna be storing all your stuff for the mod.
+
+Add a new file called, **'main.gd'** (**It doesn't need to be called main it could be called whatever you like!**).
+
+In Godot press **Project -> Project Settings -> AutoLoad -> Set Path: Your main.gd path, NodeName: Basically 'YourName.YourModName' but without the dot, so 'YourNameYourModName'**.
+This will make it so everytime WEBFISHING opens with this mod, it will automatically start **'main.gd'**
+
+# Downloading Dependencies
+To get the player node, we can't just say **"hey computer give me player"**, we need to somehow find him.
+So, we will use BlueberryWolf's APIs for that!
+
+> 💫 Download BlueberryWolf's APIs: https://github.com/BlueberryWolf/APIs/archive/refs/heads/main.zip
+Unzip **BlueberryWolf's APIs (APIs-main.zip)**. Create a new folder in your **'/mods/'** folder, called **'BlueberryWolfi.APIs'**
+and put all of the **'BlueberryWolf's APIs'** contents into the **'/mods/BlueberryWolfi.APIs'** 
+
+Since **'BlueberryWolfi.APIs'** has **'main.gd'** too, we need to autoload it too. So go back and do the same thing for **'BlueberryWolfi.APIs'**, the NodeName for this will be:
+**'BlueberryWolfiAPIs'**.
+
+# Using Dependencies
+Okay, now let's try getting the player.
+
+```gd filename="main.gd" {3} copy
+extends Node
+
+var PlayerAPI # Create an empty variable called PlayerAPI.
+
+func _ready(): # When mod starts
+	PlayerAPI = get_node_or_null("/root/BlueberryWolfiAPIs/PlayerAPI") # Get PlayerAPI from BlueberryWolfiAPIs
+	PlayerAPI.connect("_player_added", self, "init_player") # When a player gets added into a lobby (You)
+
+func init_player(player: Actor): # When player gets added run this code
+	# Nothing for now.
+    pass
+```
+
+# GDScript
+Let's try changing the player speed to 32.
+
+```gd filename="main.gd" {3} copy
+extends Node
+
+var PlayerAPI # Create an empty variable called PlayerAPI.
+
+func _ready(): # When mod starts
+	PlayerAPI = get_node_or_null("/root/BlueberryWolfiAPIs/PlayerAPI") # Get PlayerAPI from BlueberryWolfiAPIs
+	PlayerAPI.connect("_player_added", self, "init_player") # When a player gets added into a lobby (You)
+
+func init_player(player: Actor): # When player gets added, run this code:
+    # The 'player' variable, is the Player Node. (This has all the Player related stuff, ofc.)
+	player.walk_speed = 32 # This sets the walk_speed to 32!
+```
+
+# C#
+👽
