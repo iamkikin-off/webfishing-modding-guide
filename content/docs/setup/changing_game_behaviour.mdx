@@ -2,6 +2,8 @@
 title: Changing game behaviour!
 ---
 
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
 So, you already made a project... now what? Well let's try changing some game values like **Player Speed**! For that we are gonna code in **GDScript**.
 ```
 var walk_speed = 3.2
@@ -18,15 +20,18 @@ For now we are gonna be changing stuff in **GDScript**, since it's easier for be
 # Setting up your Mod Files
 So, right now, your **WEBFISHING** file system should look like this:
 
-**res://**
-- **Assets**
-- **Resources**
-- **Scenes**
-- **Sounds**
-- **default_bus_layout.tres**
-- **default_env.tres**
-- **icon.png**
-- **interactable.gd**
+<Files>
+  <Folder name="res://" defaultOpen>
+    <Folder name="Assets"/>
+    <Folder name="Resources"/>
+    <Folder name="Scenes"/>
+    <Folder name="Sounds"/>
+    <File name="default_bus_layout.tres"/>
+    <File name="default_env.tres"/>
+    <File name="icon.png"/>
+    <File name="interactable.gd"/>
+  </Folder>
+</Files>
 
 Add a new folder to the **'res://'** called "mods". Add another folder to the **'mods'** folder called **'YourName.YourModName'**.
 This is where you are gonna be storing all your stuff for the mod.
